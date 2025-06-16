@@ -1068,7 +1068,6 @@ foreach ($sid in $UserSIDs) {
 #                                             Clear Start Menu                                             #
 #                                                                                                          #
 ############################################################################################################
-<#
 write-output "Clearing Start Menu"
 #Delete layout file if it already exists
 
@@ -1142,7 +1141,7 @@ if ($version -like "*Windows 11*") {
         invoke-webrequest -uri $starturl -outfile "C:\Users\Default\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\Start2.bin"
     }
 }
-#>
+
 
 ############################################################################################################
 #                                              Remove Xbox Gaming                                          #
@@ -1491,7 +1490,7 @@ if ($manufacturer -like "*HP*") {
 
     ##Remove HP Connect Optimizer if setup.exe exists
     if (test-path -Path 'C:\Program Files (x86)\InstallShield Installation Information\{6468C4A5-E47E-405F-B675-A70A70983EA6}\setup.exe') {
-        invoke-webrequest -uri "https://github.com/SstRai/DeBloat/raw/refs/heads/main/HPConnOpt.iss" -outfile "C:\Windows\Temp\HPConnOpt.iss"
+        invoke-webrequest -uri "https://raw.githubusercontent.com/andrew-s-taylor/public/main/De-Bloat/HPConnOpt.iss" -outfile "C:\Windows\Temp\HPConnOpt.iss"
 
         &'C:\Program Files (x86)\InstallShield Installation Information\{6468C4A5-E47E-405F-B675-A70A70983EA6}\setup.exe' @('-s', '-f1C:\Windows\Temp\HPConnOpt.iss')
     }
